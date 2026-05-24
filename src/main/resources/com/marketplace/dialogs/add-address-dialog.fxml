@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.oracle.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.dialog.AddAddressDialogController"
+      styleClass="dialog-root" spacing="0">
+
+    <HBox styleClass="dialog-header" alignment="CENTER_LEFT" spacing="14">
+        <Label text="📍" styleClass="dialog-icon"/>
+        <VBox spacing="3" HBox.hgrow="ALWAYS">
+            <Label text="Новый адрес" styleClass="dialog-title"/>
+            <Label text="Укажите адрес доставки" styleClass="dialog-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <HBox styleClass="addr-preview-strip" alignment="CENTER_LEFT" spacing="16">
+        <padding><Insets top="12" right="28" bottom="12" left="28"/></padding>
+        <Label text="🗺️" style="-fx-font-size: 24px;"/>
+        <VBox spacing="3" HBox.hgrow="ALWAYS">
+            <Label fx:id="previewCity" text="Город..."
+                   style="-fx-font-size: 11px; -fx-text-fill: #94a3b8; -fx-font-family: 'Segoe UI';"/>
+            <Label fx:id="previewStreet" text="Улица и дом будут показаны здесь"
+                   style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #475569; -fx-font-family: 'Segoe UI';"/>
+        </VBox>
+    </HBox>
+
+    <VBox styleClass="dialog-form" spacing="13">
+
+        <VBox spacing="5">
+            <Label text="НАЗВАНИЕ" styleClass="field-label"/>
+            <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="10">
+                <Label text="🏷️" styleClass="input-icon"/>
+                <TextField fx:id="labelField" promptText="Дом, Работа, Дача..."
+                           styleClass="styled-input" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Label fx:id="labelError" text="" styleClass="field-error" managed="false" visible="false"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="ГОРОД" styleClass="field-label"/>
+            <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="10">
+                <Label text="🏙️" styleClass="input-icon"/>
+                <TextField fx:id="cityField" promptText="Москва"
+                           styleClass="styled-input" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Label fx:id="cityError" text="" styleClass="field-error" managed="false" visible="false"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="УЛИЦА" styleClass="field-label"/>
+            <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="10">
+                <Label text="🛣️" styleClass="input-icon"/>
+                <TextField fx:id="streetField" promptText="ул. Ленина"
+                           styleClass="styled-input" HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Label fx:id="streetError" text="" styleClass="field-error" managed="false" visible="false"/>
+        </VBox>
+
+        <HBox spacing="10">
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="ДОМ" styleClass="field-label"/>
+                <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="6">
+                    <TextField fx:id="houseField" promptText="1"
+                               styleClass="styled-input" HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <Label fx:id="houseError" text="" styleClass="field-error" managed="false" visible="false"/>
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="ПОДЪЕЗД" styleClass="field-label"/>
+                <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="6">
+                    <TextField fx:id="entranceField" promptText="2"
+                               styleClass="styled-input" HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="КВАРТИРА" styleClass="field-label"/>
+                <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="6">
+                    <TextField fx:id="apartmentField" promptText="42"
+                               styleClass="styled-input" HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </VBox>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="10" styleClass="checkbox-row">
+            <CheckBox fx:id="defaultCheckbox" styleClass="styled-checkbox"/>
+            <Label text="Использовать по умолчанию" styleClass="checkbox-label"/>
+        </HBox>
+
+    </VBox>
+
+    <HBox styleClass="dialog-footer" spacing="12" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelBtn" text="Отмена" styleClass="btn-cancel" onAction="#onCancel"/>
+        <Button fx:id="saveBtn" text="Сохранить адрес" styleClass="btn-primary" onAction="#onSave" defaultButton="true"/>
+    </HBox>
+
+</VBox>

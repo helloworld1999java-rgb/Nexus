@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.marketplace.controller.MainController"
+            styleClass="main-root">
+
+    <top>
+        <HBox styleClass="navbar" alignment="CENTER_LEFT" spacing="0">
+            <padding><Insets top="0" bottom="0" left="24" right="24"/></padding>
+
+            <Button text="NEXUS" styleClass="nav-brand" onAction="#onHome"/>
+            <Region prefWidth="32"/>
+
+            <Region HBox.hgrow="ALWAYS"/>
+
+            <HBox fx:id="navBar" spacing="4" alignment="CENTER">
+                <Button fx:id="homeBtn"    text="Главная"  styleClass="nav-link" onAction="#onHome"/>
+                <Button fx:id="catalogBtn" text="Каталог"  styleClass="nav-link" onAction="#onCatalog"/>
+                <StackPane alignment="CENTER" minHeight="36">
+                    <Button fx:id="cartBtn" text="🛒 Корзина" styleClass="nav-link" onAction="#onCart"/>
+                    <Label fx:id="cartBadgeLabel" styleClass="cart-badge" visible="false"
+                           StackPane.alignment="TOP_RIGHT"
+                           translateX="6" translateY="-6"/>
+                </StackPane>
+                <Button fx:id="ordersBtn"  text="Заказы"   styleClass="nav-link" onAction="#onOrders"/>
+                <Button fx:id="profileBtn" text="Профиль"  styleClass="nav-link" onAction="#onProfile"/>
+                <Button fx:id="sellerBtn"  text="Продавец" styleClass="nav-link" onAction="#onSeller" visible="false" managed="false"/>
+                <Button fx:id="adminBtn"   text="Админ"    styleClass="nav-link" onAction="#onAdmin"  visible="false" managed="false"/>
+            </HBox>
+
+            <Region prefWidth="16"/>
+
+            <HBox fx:id="authPanel" spacing="8" alignment="CENTER" visible="false" managed="false">
+                <Button text="Выйти" styleClass="btn-outline" onAction="#onLogout"/>
+            </HBox>
+
+            <HBox fx:id="guestPanel" spacing="8" alignment="CENTER">
+                <Button text="Войти" styleClass="btn-outline" onAction="#onLogin"/>
+                <Button text="Регистрация" styleClass="btn-primary" onAction="#onRegister"/>
+            </HBox>
+
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="content-scroll" vbarPolicy="AS_NEEDED">
+            <BorderPane fx:id="rootPane" styleClass="content-area"/>
+        </ScrollPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.HomeController"
+      spacing="0" styleClass="home-root">
+
+    <VBox styleClass="hero-banner" alignment="CENTER" spacing="16">
+        <padding><Insets top="60" bottom="60" left="60" right="60"/></padding>
+        <Label text="Добро пожаловать в NEXUS" styleClass="hero-title"/>
+        <Label text="Миллионы товаров от лучших продавцов" styleClass="hero-subtitle"/>
+        <Button text="Перейти в каталог →" styleClass="btn-primary" onAction="#onShowCatalog"/>
+    </VBox>
+
+    <VBox spacing="12" styleClass="section">
+        <padding><Insets top="32" bottom="16" left="40" right="40"/></padding>
+        <Label text="Категории" styleClass="section-title"/>
+        <ScrollPane fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="NEVER">
+            <HBox fx:id="categoryChipsBox" spacing="10" alignment="CENTER_LEFT">
+                <padding><Insets top="4" bottom="4"/></padding>
+            </HBox>
+        </ScrollPane>
+    </VBox>
+
+    <VBox spacing="12" styleClass="section">
+        <padding><Insets top="0" bottom="40" left="40" right="40"/></padding>
+        <Label text="Рекомендуемые товары" styleClass="section-title"/>
+        <FlowPane fx:id="featuredFlowPane" hgap="16" vgap="16" styleClass="products-flow"/>
+    </VBox>
+</VBox>

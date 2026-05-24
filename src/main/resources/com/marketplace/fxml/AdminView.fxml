@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.AdminController"
+      styleClass="page-container" spacing="20">
+
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Администрирование" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="↻ Обновить" styleClass="btn-outline" onAction="#onRefresh"/>
+    </HBox>
+
+    <HBox spacing="16">
+        <HBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+            <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+            <VBox spacing="4">
+                <Label text="Пользователей" styleClass="stat-label"/>
+                <Label fx:id="totalUsersLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+        <HBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+            <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+            <VBox spacing="4">
+                <Label text="Товаров" styleClass="stat-label"/>
+                <Label fx:id="totalProductsLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+        <HBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+            <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+            <VBox spacing="4">
+                <Label text="Заказов" styleClass="stat-label"/>
+                <Label fx:id="totalOrdersLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+        <HBox styleClass="stat-card" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+            <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+            <VBox spacing="4">
+                <Label text="Выручка" styleClass="stat-label"/>
+                <Label fx:id="totalRevenueLabel" text="0 ₽" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+    </HBox>
+
+    <TabPane VBox.vgrow="ALWAYS">
+
+        <Tab text="👥 Пользователи" closable="false">
+            <VBox spacing="12">
+                <padding><Insets top="16"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <TextField fx:id="userSearchField" promptText="Поиск по email или имени..." prefWidth="300"/>
+                    <ComboBox fx:id="roleFilterCombo" promptText="Роль" prefWidth="140"/>
+                    <Button text="Найти" styleClass="btn-primary" onAction="#onSearchUsers"/>
+                </HBox>
+                <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+                    <placeholder><Label text="Нет пользователей" styleClass="empty-label"/></placeholder>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="📦 Товары" closable="false">
+            <VBox spacing="12">
+                <padding><Insets top="16"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <TextField fx:id="productSearchField" promptText="Поиск товара..." prefWidth="300"/>
+                    <ComboBox fx:id="productStatusFilter" promptText="Статус" prefWidth="140"/>
+                    <Button text="Найти" styleClass="btn-primary" onAction="#onSearchProducts"/>
+                </HBox>
+                <TableView fx:id="productsTable" VBox.vgrow="ALWAYS">
+                    <placeholder><Label text="Нет товаров" styleClass="empty-label"/></placeholder>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="📋 Заказы" closable="false">
+            <VBox spacing="12">
+                <padding><Insets top="16"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <ComboBox fx:id="orderStatusFilter" promptText="Статус заказа" prefWidth="180"/>
+                    <Button text="Фильтровать" styleClass="btn-primary" onAction="#onFilterOrders"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="ordersCountLabel" styleClass="label-muted"/>
+                </HBox>
+                <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS">
+                    <placeholder><Label text="Нет заказов" styleClass="empty-label"/></placeholder>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="🏷️ Промокоды" closable="false">
+            <VBox spacing="12">
+                <padding><Insets top="16"/></padding>
+                <HBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Управление промокодами" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="+ Добавить промокод" styleClass="btn-primary" onAction="#onAddPromo"/>
+                </HBox>
+                <TableView fx:id="promoTable" VBox.vgrow="ALWAYS">
+                    <placeholder><Label text="Промокоды не созданы" styleClass="empty-label"/></placeholder>
+                </TableView>
+            </VBox>
+        </Tab>
+
+    </TabPane>
+</VBox>

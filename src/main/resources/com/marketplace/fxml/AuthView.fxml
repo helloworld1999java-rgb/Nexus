@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.marketplace.controller.AuthController"
+           styleClass="auth-root">
+
+    <HBox>
+
+        <VBox minWidth="400" maxWidth="400" alignment="CENTER" spacing="40"
+              style="-fx-background-color: #6366f1; -fx-padding: 60 52 60 52;">
+
+            <VBox spacing="10">
+                <Label text="NEXUS"
+                       style="-fx-font-size: 50px; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: 'Segoe UI';"/>
+                <Label text="M A R K E T P L A C E"
+                       style="-fx-font-size: 11px; -fx-text-fill: rgba(255,255,255,0.5); -fx-font-family: 'Segoe UI';"/>
+                <Region prefHeight="8"/>
+                <Label wrapText="true" maxWidth="296"
+                       text="Покупайте, продавайте, управляйте — всё в одном месте."
+                       style="-fx-font-size: 15px; -fx-text-fill: rgba(255,255,255,0.75); -fx-font-family: 'Segoe UI'; -fx-line-spacing: 4;"/>
+            </VBox>
+
+            <VBox spacing="22">
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane minWidth="46" minHeight="46"
+                               style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 12;">
+                        <Label text="🛍️" style="-fx-font-size: 20px;"/>
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label text="Тысячи товаров"
+                               style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"/>
+                        <Label text="От проверенных продавцов"
+                               style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 12px;"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane minWidth="46" minHeight="46"
+                               style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 12;">
+                        <Label text="🚀" style="-fx-font-size: 20px;"/>
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label text="Быстрая доставка"
+                               style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"/>
+                        <Label text="Отслеживайте каждый заказ"
+                               style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 12px;"/>
+                    </VBox>
+                </HBox>
+                <HBox spacing="16" alignment="CENTER_LEFT">
+                    <StackPane minWidth="46" minHeight="46"
+                               style="-fx-background-color: rgba(255,255,255,0.15); -fx-background-radius: 12;">
+                        <Label text="🔒" style="-fx-font-size: 20px;"/>
+                    </StackPane>
+                    <VBox spacing="3">
+                        <Label text="Безопасные платежи"
+                               style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-family: 'Segoe UI';"/>
+                        <Label text="Защита каждой транзакции"
+                               style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 12px;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Label text="© 2026 NEXUS Marketplace"
+                   style="-fx-font-size: 11px; -fx-text-fill: rgba(255,255,255,0.3);"/>
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS" alignment="CENTER"
+              style="-fx-background-color: #f8fafc;">
+
+            <VBox fx:id="loginPane" spacing="20" maxWidth="420"
+                  style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #e2e8f0; -fx-border-radius: 20; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 24, 0, 0, 4); -fx-padding: 44 44 44 44;">
+
+                <VBox spacing="6">
+                    <Label text="Добро пожаловать 👋"
+                           style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: 'Segoe UI';"/>
+                    <Label text="Войдите в свой аккаунт"
+                           style="-fx-font-size: 14px; -fx-text-fill: #94a3b8; -fx-font-family: 'Segoe UI';"/>
+                </VBox>
+
+                <Label fx:id="loginErrorLabel"
+                       style="-fx-text-fill: #ef4444; -fx-font-size: 13px; -fx-padding: 8 12 8 12; -fx-background-color: rgba(239,68,68,0.06); -fx-background-radius: 8;"
+                       visible="false" wrapText="true" maxWidth="332"/>
+
+                <VBox spacing="7">
+                    <Label text="EMAIL" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 4 14 4 14; -fx-min-height: 48;">
+                        <Label text="✉️" style="-fx-font-size: 15px; -fx-opacity: 0.5;"/>
+                        <TextField fx:id="loginEmailField" promptText="your@email.com" HBox.hgrow="ALWAYS"
+                                   style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: #0f172a; -fx-prompt-text-fill: #cbd5e1; -fx-font-size: 14px; -fx-padding: 8 0 8 0;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="7">
+                    <Label text="ПАРОЛЬ" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 4 14 4 14; -fx-min-height: 48;">
+                        <Label text="🔑" style="-fx-font-size: 15px; -fx-opacity: 0.5;"/>
+                        <PasswordField fx:id="loginPasswordField" promptText="Введите пароль" HBox.hgrow="ALWAYS"
+                                       style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: #0f172a; -fx-prompt-text-fill: #cbd5e1; -fx-font-size: 14px; -fx-padding: 8 0 8 0;"/>
+                    </HBox>
+                </VBox>
+
+                <ProgressIndicator fx:id="loadingIndicator" prefWidth="28" prefHeight="28" visible="false"/>
+
+                <Button fx:id="loginButton" text="Войти →" onAction="#handleLogin" maxWidth="Infinity"
+                        style="-fx-background-color: #6366f1; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-padding: 14 0 14 0; -fx-background-radius: 12; -fx-cursor: hand; -fx-border-width: 0; -fx-effect: dropshadow(gaussian, rgba(99,102,241,0.35), 12, 0, 0, 4); -fx-font-family: 'Segoe UI';"/>
+
+                <HBox alignment="CENTER" spacing="6">
+                    <Label text="Нет аккаунта?" style="-fx-font-size: 13px; -fx-text-fill: #94a3b8;"/>
+                    <Button text="Зарегистрируйтесь" onAction="#showRegister"
+                            style="-fx-background-color: transparent; -fx-text-fill: #6366f1; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-border-width: 0; -fx-padding: 4 6 4 6;"/>
+                </HBox>
+            </VBox>
+
+            <VBox fx:id="registerPane" spacing="16" maxWidth="420" visible="false" managed="false"
+                  style="-fx-background-color: #ffffff; -fx-background-radius: 20; -fx-border-color: #e2e8f0; -fx-border-radius: 20; -fx-border-width: 1; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 24, 0, 0, 4); -fx-padding: 36 44 36 44;">
+
+                <VBox spacing="6">
+                    <Label text="Создать аккаунт ✨"
+                           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0f172a; -fx-font-family: 'Segoe UI';"/>
+                    <Label text="Присоединяйтесь к NEXUS"
+                           style="-fx-font-size: 14px; -fx-text-fill: #94a3b8;"/>
+                </VBox>
+
+                <Label fx:id="registerErrorLabel"
+                       style="-fx-text-fill: #ef4444; -fx-font-size: 13px; -fx-padding: 8 12 8 12; -fx-background-color: rgba(239,68,68,0.06); -fx-background-radius: 8;"
+                       visible="false" wrapText="true" maxWidth="332"/>
+
+                <VBox spacing="7">
+                    <Label text="ИМЯ" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 4 14 4 14; -fx-min-height: 46;">
+                        <Label text="👤" style="-fx-font-size: 14px; -fx-opacity: 0.5;"/>
+                        <TextField fx:id="registerNameField" promptText="Иван Иванов" HBox.hgrow="ALWAYS"
+                                   style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: #0f172a; -fx-prompt-text-fill: #cbd5e1; -fx-font-size: 14px; -fx-padding: 7 0 7 0;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="7">
+                    <Label text="EMAIL" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 4 14 4 14; -fx-min-height: 46;">
+                        <Label text="✉️" style="-fx-font-size: 14px; -fx-opacity: 0.5;"/>
+                        <TextField fx:id="registerEmailField" promptText="your@email.com" HBox.hgrow="ALWAYS"
+                                   style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: #0f172a; -fx-prompt-text-fill: #cbd5e1; -fx-font-size: 14px; -fx-padding: 7 0 7 0;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="7">
+                    <Label text="ПАРОЛЬ" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 4 14 4 14; -fx-min-height: 46;">
+                        <Label text="🔑" style="-fx-font-size: 14px; -fx-opacity: 0.5;"/>
+                        <PasswordField fx:id="registerPasswordField" promptText="Минимум 6 символов" HBox.hgrow="ALWAYS"
+                                       style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: #0f172a; -fx-prompt-text-fill: #cbd5e1; -fx-font-size: 14px; -fx-padding: 7 0 7 0;"/>
+                    </HBox>
+                </VBox>
+
+                <VBox spacing="7">
+                    <Label text="ПОДТВЕРДИТЕ ПАРОЛЬ" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #64748b;"/>
+                    <HBox alignment="CENTER_LEFT" spacing="10"
+                          style="-fx-background-color: #f8fafc; -fx-border-color: #e2e8f0; -fx-border-width: 1.5; -fx-border-radius: 10; -fx-background-radius: 10; -fx-padding: 4 14 4 14; -fx-min-height: 46;">
+                        <Label text="🔒" style="-fx-font-size: 14px; -fx-opacity: 0.5;"/>
+                        <PasswordField fx:id="registerConfirmField" promptText="Повторите пароль" HBox.hgrow="ALWAYS"
+                                       style="-fx-background-color: transparent; -fx-border-width: 0; -fx-text-fill: #0f172a; -fx-prompt-text-fill: #cbd5e1; -fx-font-size: 14px; -fx-padding: 7 0 7 0;"/>
+                    </HBox>
+                </VBox>
+
+                <Button fx:id="registerButton" text="Создать аккаунт →" onAction="#handleRegister" maxWidth="Infinity"
+                        style="-fx-background-color: #6366f1; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-padding: 13 0 13 0; -fx-background-radius: 12; -fx-cursor: hand; -fx-border-width: 0; -fx-effect: dropshadow(gaussian, rgba(99,102,241,0.35), 12, 0, 0, 4);"/>
+
+                <HBox alignment="CENTER" spacing="6">
+                    <Label text="Уже есть аккаунт?" style="-fx-font-size: 13px; -fx-text-fill: #94a3b8;"/>
+                    <Button text="Войти" onAction="#showLogin"
+                            style="-fx-background-color: transparent; -fx-text-fill: #6366f1; -fx-font-size: 13px; -fx-font-weight: bold; -fx-cursor: hand; -fx-border-width: 0; -fx-padding: 4 6 4 6;"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </HBox>
+</StackPane>

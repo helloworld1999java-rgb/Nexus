@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.ProfileController"
+      spacing="0" styleClass="page-container">
+
+    <padding><Insets top="32" bottom="40" left="40" right="40"/></padding>
+
+    <Label text="Мой профиль" styleClass="page-title"/>
+
+    <TabPane VBox.vgrow="ALWAYS">
+        <padding><Insets top="20"/></padding>
+
+        <Tab text="👤 Личные данные" closable="false">
+            <ScrollPane fitToWidth="true">
+                <VBox spacing="24" maxWidth="600">
+                    <padding><Insets top="24" bottom="40" left="24" right="24"/></padding>
+
+                    <VBox styleClass="card-flat" spacing="16">
+                        <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+                        <Label text="Основная информация" styleClass="section-title"/>
+                        <VBox spacing="6"><Label text="Полное имя" styleClass="field-label"/>
+                            <TextField fx:id="fullNameField" promptText="Иван Иванов"/></VBox>
+                        <VBox spacing="6"><Label text="Email" styleClass="field-label"/>
+                            <TextField fx:id="emailField" editable="false"/></VBox>
+                        <VBox spacing="6"><Label text="Телефон" styleClass="field-label"/>
+                            <TextField fx:id="phoneField" promptText="+7 (999) 000-00-00"/></VBox>
+                        <Label fx:id="profileSaveStatus" styleClass="label-muted" visible="false"/>
+                        <Button fx:id="saveProfileBtn" text="Сохранить изменения" styleClass="btn-primary" onAction="#onSaveProfile"/>
+                    </VBox>
+
+                    <VBox styleClass="card-flat" spacing="16">
+                        <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+                        <Label text="Изменить пароль" styleClass="section-title"/>
+                        <VBox spacing="6"><Label text="Новый пароль" styleClass="field-label"/>
+                            <PasswordField fx:id="newPasswordField" promptText="Минимум 6 символов"/></VBox>
+                        <VBox spacing="6"><Label text="Подтвердите пароль" styleClass="field-label"/>
+                            <PasswordField fx:id="confirmPasswordField"/></VBox>
+                        <Label fx:id="passwordStatus" styleClass="label-muted" visible="false"/>
+                        <Button fx:id="changePasswordBtn" text="Изменить пароль" styleClass="btn-outline" onAction="#onChangePassword"/>
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="📍 Адреса" closable="false">
+            <ScrollPane fitToWidth="true">
+                <VBox spacing="16" maxWidth="700">
+                    <padding><Insets top="24" bottom="40" left="24" right="24"/></padding>
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Адреса доставки" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Добавить адрес" styleClass="btn-outline" onAction="#onAddAddress"/>
+                    </HBox>
+                    <VBox fx:id="addressesBox" spacing="10"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="💳 Карты" closable="false">
+            <ScrollPane fitToWidth="true">
+                <VBox spacing="16" maxWidth="700">
+                    <padding><Insets top="24" bottom="40" left="24" right="24"/></padding>
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Карты оплаты" styleClass="section-title" HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Добавить карту" styleClass="btn-outline" onAction="#onAddCard"/>
+                    </HBox>
+                    <HBox fx:id="cardsBox" spacing="12"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="🏷 Роль" closable="false">
+            <ScrollPane fitToWidth="true">
+                <VBox spacing="24" maxWidth="600">
+                    <padding><Insets top="24" bottom="40" left="24" right="24"/></padding>
+
+                    <VBox styleClass="card-flat" spacing="16">
+                        <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+                        <Label text="Ваша роль на платформе" styleClass="section-title"/>
+                        <Label fx:id="currentRoleLabel" styleClass="label-muted"/>
+
+                        <VBox fx:id="becomeSellerBox" spacing="10">
+                            <Label text="Хотите продавать на маркетплейсе?" styleClass="field-label"/>
+                            <Label text="Вы получите доступ к панели продавца и сможете добавлять товары."
+                                   styleClass="label-muted" wrapText="true"/>
+                            <Button text="🚀 Стать продавцом" styleClass="btn-primary"
+                                    onAction="#onBecomeSeller" maxWidth="220"/>
+                        </VBox>
+
+                        <VBox fx:id="becomeBuyerBox" spacing="10" visible="false" managed="false">
+                            <Label text="Отказаться от роли продавца?" styleClass="field-label"/>
+                            <Label text="Ваши товары останутся в базе, но будут скрыты. Вы сможете снова стать продавцом в любое время."
+                                   styleClass="label-muted" wrapText="true"/>
+                            <Button text="👤 Стать покупателем" styleClass="btn-outline"
+                                    onAction="#onBecomeBuyer" maxWidth="220"/>
+                        </VBox>
+                    </VBox>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+    </TabPane>
+</VBox>

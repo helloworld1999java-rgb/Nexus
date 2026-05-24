@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.SellerController"
+      spacing="0" styleClass="page-container">
+
+    <padding><Insets top="24" bottom="40" left="40" right="40"/></padding>
+
+    <Label text="Панель продавца" styleClass="page-title"/>
+
+    <HBox spacing="16">
+        <padding><Insets top="20" bottom="20"/></padding>
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <padding><Insets top="16" bottom="16" left="20" right="20"/></padding>
+            <Label text="Товаров" styleClass="stat-label"/>
+            <Label fx:id="totalProductsLabel" text="—" styleClass="stat-value"/>
+        </VBox>
+        <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <padding><Insets top="16" bottom="16" left="20" right="20"/></padding>
+            <Label text="Продано" styleClass="stat-label"/>
+            <Label fx:id="totalSalesLabel" text="—" styleClass="stat-value"/>
+        </VBox>
+    </HBox>
+
+    <TabPane VBox.vgrow="ALWAYS">
+
+        <Tab text="📦 Мои товары" closable="false">
+            <VBox spacing="8">
+                <padding><Insets top="16"/></padding>
+                <ProgressIndicator fx:id="loadingIndicator" prefWidth="36" prefHeight="36" visible="false"/>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS">
+                    <VBox fx:id="productsListBox" spacing="8"/>
+                </ScrollPane>
+            </VBox>
+        </Tab>
+
+        <Tab text="➕ Добавить / Редактировать" closable="false">
+            <ScrollPane fitToWidth="true">
+                <VBox spacing="16" maxWidth="680">
+                    <padding><Insets top="20" bottom="40" left="20" right="20"/></padding>
+
+                    <Label fx:id="formTitleLabel" text="Добавить товар" styleClass="section-title"/>
+
+                    <VBox spacing="6">
+                        <Label text="Название *" styleClass="field-label"/>
+                        <TextField fx:id="nameField" promptText="Название товара"/>
+                    </VBox>
+
+                    <VBox spacing="6">
+                        <Label text="Описание" styleClass="field-label"/>
+                        <TextArea fx:id="descriptionField" prefRowCount="4" wrapText="true"/>
+                    </VBox>
+
+                    <HBox spacing="16">
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Цена (₽) *" styleClass="field-label"/>
+                            <TextField fx:id="priceField" promptText="1990"/>
+                        </VBox>
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Старая цена (₽)" styleClass="field-label"/>
+                            <TextField fx:id="oldPriceField" promptText="2490"/>
+                        </VBox>
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="На складе *" styleClass="field-label"/>
+                            <TextField fx:id="stockField" promptText="100"/>
+                        </VBox>
+                    </HBox>
+
+                    <HBox spacing="16">
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Категория" styleClass="field-label"/>
+                            <ComboBox fx:id="categoryCombo" maxWidth="Infinity"/>
+                        </VBox>
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Бренд" styleClass="field-label"/>
+                            <TextField fx:id="brandField"/>
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="6">
+                        <Label text="Страна поставщика" styleClass="field-label"/>
+                        <TextField fx:id="supplierCountryField" promptText="Например: Китай, Германия, Россия"/>
+                    </VBox>
+
+                    <HBox spacing="16">
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Доставка от (дней)" styleClass="field-label"/>
+                            <TextField fx:id="deliveryDaysMinField" promptText="3"/>
+                        </VBox>
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="Доставка до (дней)" styleClass="field-label"/>
+                            <TextField fx:id="deliveryDaysMaxField" promptText="7"/>
+                        </VBox>
+                    </HBox>
+
+                    <VBox spacing="8">
+                        <Label text="Изображения" styleClass="field-label"/>
+                        <Button fx:id="addImageBtn" text="📁 Выбрать изображение"
+                                styleClass="btn-outline" onAction="#onAddImage"/>
+                        <ScrollPane fitToHeight="true" prefHeight="90"
+                                    hbarPolicy="AS_NEEDED" vbarPolicy="NEVER">
+                            <HBox fx:id="imagesBox" spacing="8"/>
+                        </ScrollPane>
+                    </VBox>
+
+                    <HBox spacing="12">
+                        <Button fx:id="saveProductBtn" text="💾 Сохранить"
+                                styleClass="btn-primary" onAction="#onSaveProduct"/>
+                        <Button fx:id="cancelEditBtn" text="Отмена"
+                                styleClass="btn-outline" onAction="#onCancelEdit" visible="false"/>
+                    </HBox>
+
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+    </TabPane>
+</VBox>

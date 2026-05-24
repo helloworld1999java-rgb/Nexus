@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.CheckoutController"
+      spacing="32" styleClass="checkout-root">
+
+    <padding><Insets top="32" bottom="40" left="40" right="40"/></padding>
+
+    <VBox HBox.hgrow="ALWAYS" spacing="24">
+        <HBox alignment="CENTER_LEFT" spacing="16">
+            <Button text="← Назад" styleClass="btn-outline" onAction="#onBack"/>
+            <Label text="Оформление заказа" styleClass="page-title"/>
+        </HBox>
+
+        <VBox styleClass="card-flat" spacing="12">
+            <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+            <Label text="📍 Адрес доставки" styleClass="section-title"/>
+            <ComboBox fx:id="addressCombo" maxWidth="Infinity" promptText="Выберите адрес..."/>
+        </VBox>
+
+        <VBox styleClass="card-flat" spacing="12">
+            <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+            <Label text="💳 Способ оплаты" styleClass="section-title"/>
+            <ComboBox fx:id="cardCombo" maxWidth="Infinity" promptText="Выберите карту..."/>
+        </VBox>
+
+        <VBox styleClass="card-flat" spacing="12">
+            <padding><Insets top="20" bottom="20" left="20" right="20"/></padding>
+            <Label text="🎟 Промокод" styleClass="section-title"/>
+            <HBox spacing="8">
+                <TextField fx:id="promoField" promptText="Введите промокод" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="applyPromoBtn" text="Применить" styleClass="btn-outline" onAction="#onApplyPromo"/>
+            </HBox>
+            <Label fx:id="promoResultLabel" styleClass="label-muted" visible="false" wrapText="true"/>
+        </VBox>
+    </VBox>
+
+    <VBox styleClass="cart-summary" spacing="16" prefWidth="340" minWidth="300">
+        <padding><Insets top="24" bottom="24" left="20" right="20"/></padding>
+        <Label text="Состав заказа" styleClass="section-title"/>
+        <Separator/>
+        <ScrollPane fitToWidth="true" maxHeight="260" vbarPolicy="AS_NEEDED">
+            <VBox fx:id="orderItemsBox" spacing="8"/>
+        </ScrollPane>
+        <Separator/>
+        <HBox>
+            <Label text="Подытог:" HBox.hgrow="ALWAYS" styleClass="label-muted"/>
+            <Label fx:id="subtotalLabel" text="0 ₽" styleClass="price-label"/>
+        </HBox>
+        <HBox>
+            <Label text="Скидка:" HBox.hgrow="ALWAYS" styleClass="label-muted"/>
+            <Label fx:id="discountLabel" text="−0 ₽" styleClass="label-muted"/>
+        </HBox>
+        <Separator/>
+        <HBox>
+            <Label text="ИТОГО:" HBox.hgrow="ALWAYS" styleClass="card-title"/>
+            <Label fx:id="totalLabel" text="0 ₽" styleClass="price-label"/>
+        </HBox>
+
+        <VBox fx:id="deliveryBlock" spacing="4"
+              style="-fx-background-color: #f0f9ff; -fx-background-radius: 8; -fx-padding: 10 12;">
+            <Label text="🚚 Ожидаемая доставка" styleClass="field-label"
+                   style="-fx-font-size: 12px; -fx-text-fill: #64748b;"/>
+            <Label fx:id="deliveryDateLabel" text="Рассчитывается..."
+                   style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #2563eb;"/>
+        </VBox>
+
+        <Button fx:id="placeOrderBtn" text="✓ Подтвердить заказ" styleClass="btn-primary"
+                onAction="#onPlaceOrder" maxWidth="Infinity"/>
+    </VBox>
+</HBox>

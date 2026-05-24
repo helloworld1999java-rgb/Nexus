@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.ProductDetailController"
+      spacing="0" styleClass="page-container">
+
+    <padding><Insets top="24" bottom="40" left="40" right="40"/></padding>
+
+    <Button text="← Назад" styleClass="btn-outline" onAction="#onBack"/>
+
+    <HBox spacing="48" VBox.vgrow="ALWAYS">
+        <padding><Insets top="28"/></padding>
+
+        <VBox spacing="12" prefWidth="420" minWidth="320">
+            <StackPane style="-fx-background-color: #f1f5f9; -fx-background-radius: 16px;" prefHeight="380">
+                <ImageView fx:id="mainImage" fitWidth="380" fitHeight="360" preserveRatio="true"
+                           StackPane.alignment="CENTER"/>
+            </StackPane>
+            <ScrollPane fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="NEVER" prefHeight="82">
+                <HBox fx:id="thumbnailsBox" spacing="10">
+                    <padding><Insets top="4" bottom="4" left="2" right="2"/></padding>
+                </HBox>
+            </ScrollPane>
+        </VBox>
+
+        <VBox spacing="14" HBox.hgrow="ALWAYS">
+            <Label fx:id="productName" styleClass="page-title" wrapText="true"/>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label fx:id="productPrice" styleClass="price-label"
+                       style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: -color-primary;"/>
+                <Label fx:id="productOldPrice" styleClass="price-old" visible="false" managed="false"/>
+            </HBox>
+
+            <Label fx:id="articleLabel"         styleClass="label-muted" visible="false" managed="false"/>
+            <Label fx:id="brandLabel"           styleClass="label-muted" visible="false" managed="false"/>
+            <Label fx:id="supplierCountryLabel" styleClass="label-muted" visible="false" managed="false"/>
+
+            <Label fx:id="stockLabel" styleClass="label-muted"/>
+
+            <HBox fx:id="deliveryBox" spacing="6" alignment="CENTER_LEFT" visible="false" managed="false">
+                <Label text="🚚" style="-fx-font-size: 14px;"/>
+                <Label fx:id="deliveryLabel" styleClass="label-muted" style="-fx-font-size: 13px;"/>
+            </HBox>
+
+            <Separator/>
+
+            <Label fx:id="productDescription" wrapText="true" styleClass="label-muted"
+                   style="-fx-font-size: 13px; -fx-line-spacing: 3;"/>
+
+            <Separator/>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+                <Label text="Количество:" styleClass="field-label"/>
+                <Spinner fx:id="quantitySpinner" prefWidth="90" editable="true"/>
+            </HBox>
+
+            <HBox spacing="12">
+                <Button fx:id="addToCartBtn" text="🛒  В корзину" styleClass="btn-primary"
+                        onAction="#onAddToCart" prefHeight="44"/>
+                <Button fx:id="buyNowBtn" text="⚡  Купить сейчас" styleClass="btn-secondary"
+                        onAction="#onBuyNow" prefHeight="44"/>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>

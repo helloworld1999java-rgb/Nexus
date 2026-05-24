@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.CartController"
+      spacing="28" styleClass="cart-root">
+
+    <padding><Insets top="32" bottom="40" left="40" right="40"/></padding>
+
+    <VBox HBox.hgrow="ALWAYS" spacing="14">
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label text="Корзина" styleClass="page-title"/>
+            <Label fx:id="itemCountLabel" styleClass="label-muted"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button fx:id="clearCartBtn" text="Очистить" styleClass="btn-danger" onAction="#onClearCart"/>
+        </HBox>
+
+        <!-- Строка «Выбрать всё» + счётчик выбранных -->
+        <HBox alignment="CENTER_LEFT" spacing="12"
+              fx:id="selectionBar"
+              style="-fx-background-color: -color-surface; -fx-background-radius: 10px;
+                     -fx-border-color: -color-border; -fx-border-radius: 10px; -fx-border-width: 1px;
+                     -fx-padding: 10 16 10 16;">
+            <CheckBox fx:id="selectAllCheckbox" text="Выбрать всё" onAction="#onSelectAll"
+                      style="-fx-font-size: 13px; -fx-cursor: hand;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="selectedSummaryLabel" styleClass="label-muted"
+                   style="-fx-font-size: 13px;"/>
+        </HBox>
+
+        <Label fx:id="emptyLabel" text="Ваша корзина пуста 🛒" styleClass="empty-label"
+               visible="false" managed="false"
+               style="-fx-font-size: 16px; -fx-text-fill: -color-text-muted;"/>
+        <VBox fx:id="cartItemsBox" spacing="10"/>
+    </VBox>
+
+    <VBox styleClass="cart-summary" spacing="16" prefWidth="300" minWidth="260">
+        <padding><Insets top="24" bottom="24" left="20" right="20"/></padding>
+        <Label text="Итого" styleClass="section-title"/>
+        <Separator/>
+        <HBox>
+            <Label text="Всего в корзине:" HBox.hgrow="ALWAYS" styleClass="label-muted"/>
+            <Label fx:id="totalLabel" text="0 ₽"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: -color-text-muted;"/>
+        </HBox>
+        <Separator/>
+
+        <!-- Кнопка частичного выкупа (только выбранные) -->
+        <Button fx:id="checkoutSelectedBtn"
+                text="✓ Оплатить выбранные →"
+                styleClass="btn-primary"
+                onAction="#onCheckoutSelected"
+                maxWidth="Infinity" prefHeight="44"/>
+
+        <!-- Кнопка полного выкупа -->
+        <Button fx:id="checkoutBtn"
+                text="Оформить всё →"
+                styleClass="btn-outline"
+                onAction="#onCheckout"
+                maxWidth="Infinity" prefHeight="38"/>
+    </VBox>
+</HBox>

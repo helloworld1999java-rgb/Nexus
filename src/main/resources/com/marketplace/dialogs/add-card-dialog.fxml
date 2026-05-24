@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.oracle.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.dialog.AddCardDialogController"
+      styleClass="dialog-root"
+      spacing="0">
+
+    <HBox styleClass="dialog-header" alignment="CENTER_LEFT" spacing="12">
+        <Label text="💳" styleClass="dialog-icon"/>
+        <VBox spacing="2" HBox.hgrow="ALWAYS">
+            <Label text="Добавить карту" styleClass="dialog-title"/>
+            <Label text="Введите данные платёжной карты" styleClass="dialog-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <StackPane styleClass="card-preview-container">
+        <VBox styleClass="card-preview" spacing="12">
+            <HBox alignment="CENTER_LEFT" spacing="8">
+                <Label fx:id="cardTypeIcon" text="💳" styleClass="card-preview-type-icon"/>
+                <Label fx:id="cardTypeLabel" text="КАРТА" styleClass="card-preview-type"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="NEXUS PAY" styleClass="card-preview-brand"/>
+            </HBox>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Label fx:id="cardNumberPreview" text="•••• •••• •••• ••••" styleClass="card-preview-number"/>
+            <HBox alignment="CENTER_LEFT" spacing="20">
+                <VBox spacing="2">
+                    <Label text="ДЕРЖАТЕЛЬ" styleClass="card-preview-label"/>
+                    <Label fx:id="cardHolderPreview" text="ИМЯ ДЕРЖАТЕЛЯ" styleClass="card-preview-value"/>
+                </VBox>
+                <VBox spacing="2">
+                    <Label text="ДЕЙСТВУЕТ ДО" styleClass="card-preview-label"/>
+                    <Label fx:id="cardExpiryPreview" text="ММ/ГГГГ" styleClass="card-preview-value"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </StackPane>
+
+    <VBox styleClass="dialog-form" spacing="16">
+
+        <VBox spacing="6" styleClass="field-group">
+            <Label text="Номер карты" styleClass="field-label"/>
+            <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="8">
+                <Label text="💳" styleClass="input-icon"/>
+                <TextField fx:id="cardNumberField"
+                           promptText="0000 0000 0000 0000"
+                           styleClass="styled-input"
+                           HBox.hgrow="ALWAYS"></TextField>
+            </HBox>
+            <Label fx:id="cardNumberError" text="" styleClass="field-error" managed="false" visible="false"/>
+        </VBox>
+
+        <VBox spacing="6" styleClass="field-group">
+            <Label text="Имя держателя" styleClass="field-label"/>
+            <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="8">
+                <Label text="👤" styleClass="input-icon"/>
+                <TextField fx:id="cardHolderField"
+                           promptText="IVAN IVANOV"
+                           styleClass="styled-input"
+                           HBox.hgrow="ALWAYS"/>
+            </HBox>
+            <Label fx:id="cardHolderError" text="" styleClass="field-error" managed="false" visible="false"/>
+        </VBox>
+
+        <HBox spacing="12">
+            <VBox spacing="6" styleClass="field-group" HBox.hgrow="ALWAYS">
+                <Label text="Месяц / Год" styleClass="field-label"/>
+                <HBox spacing="8">
+                    <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="6" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="monthField"
+                                   promptText="ММ"
+                                   styleClass="styled-input expiry-input"
+                                   HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Label text="/" styleClass="expiry-separator"/>
+                    <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="6" HBox.hgrow="ALWAYS">
+                        <TextField fx:id="yearField"
+                                   promptText="ГГГГ"
+                                   styleClass="styled-input expiry-input"
+                                   HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                </HBox>
+                <Label fx:id="expiryError" text="" styleClass="field-error" managed="false" visible="false"/>
+            </VBox>
+
+            <VBox spacing="6" styleClass="field-group" HBox.hgrow="ALWAYS">
+                <Label text="CVV / CVC" styleClass="field-label"/>
+                <HBox styleClass="input-wrapper" alignment="CENTER_LEFT" spacing="8">
+                    <Label text="🔒" styleClass="input-icon"/>
+                    <PasswordField fx:id="cvvField"
+                                  promptText="•••"
+                                  styleClass="styled-input"
+                                  HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <Label fx:id="cvvError" text="" styleClass="field-error" managed="false" visible="false"/>
+            </VBox>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" spacing="8" styleClass="checkbox-row">
+            <CheckBox fx:id="defaultCheckbox" styleClass="styled-checkbox"/>
+            <Label text="Сделать основной картой" styleClass="checkbox-label"/>
+        </HBox>
+
+    </VBox>
+
+    <HBox styleClass="dialog-footer" spacing="12" alignment="CENTER_RIGHT">
+        <Button fx:id="cancelBtn" text="Отмена" styleClass="btn-cancel" onAction="#onCancel"/>
+        <Button fx:id="saveBtn" text="Добавить карту" styleClass="btn-primary" onAction="#onSave" defaultButton="true"/>
+    </HBox>
+
+</VBox>

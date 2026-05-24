@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<HBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.marketplace.controller.CatalogController"
+      spacing="0" styleClass="catalog-root">
+
+    <VBox styleClass="filter-sidebar" spacing="16" prefWidth="240" minWidth="220">
+        <padding><Insets top="24" bottom="24" left="16" right="16"/></padding>
+        <Label text="Фильтры" styleClass="section-title"/>
+
+        <VBox spacing="6">
+            <Label text="Категория" styleClass="field-label"/>
+            <ComboBox fx:id="categoryCombo" maxWidth="Infinity"/>
+        </VBox>
+        <Separator/>
+        <VBox spacing="6">
+            <Label text="Сортировка" styleClass="field-label"/>
+            <ComboBox fx:id="sortCombo" maxWidth="Infinity"/>
+        </VBox>
+        <Separator/>
+        <VBox spacing="6">
+            <Label text="Цена от" styleClass="field-label"/>
+            <Slider fx:id="minPriceSlider" min="0" max="100000"/>
+            <Label fx:id="minPriceLabel" text="0 ₽" styleClass="label-muted"/>
+        </VBox>
+        <VBox spacing="6">
+            <Label text="Цена до" styleClass="field-label"/>
+            <Slider fx:id="maxPriceSlider" min="0" max="100000" value="100000"/>
+            <Label fx:id="maxPriceLabel" text="100 000 ₽" styleClass="label-muted"/>
+        </VBox>
+        <Separator/>
+        <CheckBox fx:id="ratingFilterCheck" text="Рейтинг 4.0+"/>
+
+        <Button text="Применить" styleClass="btn-primary" maxWidth="Infinity" onAction="#onSearch"/>
+        <Button text="Сбросить" styleClass="btn-outline" maxWidth="Infinity" onAction="#onResetFilters"/>
+    </VBox>
+
+    <VBox HBox.hgrow="ALWAYS" spacing="12">
+        <padding><Insets top="24" bottom="24" left="24" right="24"/></padding>
+
+        <HBox spacing="12" alignment="CENTER_LEFT">
+            <TextField fx:id="searchField" promptText="Поиск по названию..." HBox.hgrow="ALWAYS"
+                       onAction="#onSearch"/>
+            <Button text="🔍" styleClass="btn-outline" onAction="#onSearch"/>
+            <Label fx:id="resultsLabel" styleClass="label-muted"/>
+            <ProgressIndicator fx:id="loadingIndicator" prefWidth="24" prefHeight="24" visible="false"/>
+        </HBox>
+
+        <FlowPane fx:id="productsFlowPane" hgap="14" vgap="14" styleClass="products-flow" VBox.vgrow="ALWAYS"/>
+
+        <HBox fx:id="paginationBox" spacing="8" alignment="CENTER"/>
+    </VBox>
+</HBox>
